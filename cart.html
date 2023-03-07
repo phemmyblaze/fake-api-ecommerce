@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake ecommerce Api</title>
+
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+
+
+    <h1>This is the cart page</h1>
+        <div class="cart_btn">
+            <a href="index.html"  class="cart-btn">Home page</a>
+        </div>
+        <div id="con">
+            
+            <div class="products-cart" id="products">
+
+                
+            </div>
+            <div class="total">
+                <h3>Total: </h3>
+                <p class="p"> $<span class="span"></span></p>
+            </div>
+        </div>
+    
+    <script>
+        let displaycart = JSON.parse(localStorage.getItem("carts"))
+        console.log(displaycart)
+
+        displaycart.forEach((item) => {
+            // console.log(item.images)
+            
+            let display  = document.createElement("display")
+
+            display.innerHTML = `
+                
+                <div class="product-cart">
+                    
+                    <img src="${item.image}" alt="" class="product-img">
+                    <div class="cart_item">
+                        <h2 class="product-title">${item.title}</h2>
+                        <h3 class="product-price">$ ${item.price}</h3>
+                    </div>
+
+                    
+                </div>
+
+            `
+            document.getElementById('products').append(display)
+
+        })
+
+
+
+        ////FUNCTION TO ADD ALL PRICES TOGETHER
+        function calc(){
+            let displaycart = JSON.parse(localStorage.getItem("carts"))
+            return displaycart.reduce((acc, item) => {
+                 return acc += item.price;
+            },0)
+
+        
+        }
+        ///TO RENDER THE TOTAL OF THE PRICES 
+        let p = document.querySelector('.span').textContent = calc()
+        // console.log(calc());
+    </script>
+</body>
+</html>
+    
+</body>
+</html>
