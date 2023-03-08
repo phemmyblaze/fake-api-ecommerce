@@ -84,4 +84,9 @@ window.onload = function () {
 }
 
 
+
+
+
+
+
 //.length > 20 ? description.substring(0, 90).concat('...more') : description
